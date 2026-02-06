@@ -1,17 +1,94 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Code from "../components/Code.astro";
 
+const projects = [
+  {
+    title: "Roomscale PBR Material Generation",
+    tech: "Pytorch / Python",
+    desc: "Novel PBR material generation pipeline outperforming state-of-the-art methods",
+  },
+  {
+    title: "Fall for Me",
+    tech: "Unity / C#",
+    desc: "Multiplayer platform fighter game with hand-drawn graphics and original music",
+  },
+  {
+    title: "BMW-Vision",
+    tech: "SceneKit / Swift",
+    desc: "Virtual reality driving simulator with pseudo-self-driving mode and customizable real-life driving cockpit",
+  },
+  {
+    title: "ARAP",
+    tech: "OpenGL / C++",
+    desc: "C++ implementation of the As-Rigid-As-Possible mesh deformation technique",
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home | Dev Portfolio">
+  <main class="max-w-6xl mx-auto px-6 py-12 space-y-24">
+    <section class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="order-2 space-y-6">
+        <h1 class="text-4xl md:text-6xl font-bold font-mono">
+          <span class="text-cyan-400">></span> Hello, <br />
+          I'm <span>Bendeguz Timar</span>
+        </h1>
+        <p class="text-gray-400 leading-relaxed text-lg font-sans">
+          I'm an aspiring software engineer currently interested in <Code>deep learning</Code>, <Code>virtual reality</Code> and <Code>game engineering</Code>.
+          Well-versed in mobile development both on Android, iOS and Flutter multiplatform. 
+        </p>
+      </div>
+
+      <div class="h-120 w-100 rounded-2xl overflow-hidden">
+        <img
+          src="/res/images/profile_pic.png"
+          alt="Profile picture"
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </section>
+
+    <section>
+      <div class="flex justify-between items-end mb-8">
+        <h2 class="text-2xl font-mono italic">// Featured Projects</h2>
+        <a href="/projects" class="text-cyan-400 text-sm hover:underline"
+          >View all _</a
+        >
+      </div>
+
+      <div
+        class="flex overflow-x-auto gap-6 pb-8 snap-x scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-cyan-900"
+      >
+        {
+          projects.map((project) => (
+            <div class="min-w-[320px] md:min-w-[400px] snap-start bg-gray-900/50 border border-gray-800 p-8 rounded-xl hover:border-cyan-500/50 transition-colors group">
+              <span class="text-xs font-mono text-cyan-500 uppercase tracking-widest">
+                {project.tech}
+              </span>
+              <h3 class="text-xl font-bold mt-2 text-white group-hover:text-cyan-400 transition-colors">
+                {project.title}
+              </h3>
+              <p class="text-gray-400 mt-4 font-sans leading-relaxed">
+                {project.desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #164e63;
+    border-radius: 10px;
+  }
+</style>
