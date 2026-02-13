@@ -1,8 +1,23 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import ProjectCard from "../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
 ---
 
 <BaseLayout>
-    <p>Under construction</p>
+    <main class="px-10 py-10 space-y-10">
+        {
+            allProjects.map((project: any, index: number) => (
+                <ProjectCard
+                    project={project.data}
+                    direction={
+                        index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                    }
+                />
+            ))
+        }
+    </main>
 </BaseLayout>
-

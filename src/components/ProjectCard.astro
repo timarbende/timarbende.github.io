@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    project: CollectionEntry<"projects">;
+    direction: "flex-row" | "flex-row-reverse";
+}
+
+const { project, direction } = Astro.props;
+---
+
+<div class="rounded-2xl border border-gray-800 w-3/4 h-60 p-5">
+    <div class:list={["flex gap-5 overflow-hidden h-full", direction]}>
+        <figure class="flex-[2] h-full overflow-hidden rounded-2xl">
+            <img src={project.image_source} alt={project.name} class="w-full h-full object-cover"/>
+        </figure>
+        <article class="flex flex-[3] flex-col overflow-hidden">
+            <p class="text-2xl mb-5">{project.title}</p>
+            <p class="text-sm text-gray-300 line-clamp-4 text-ellipsis">{project.description}</p>
+        </article>
+    </div>
+</div>
