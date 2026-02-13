@@ -1,6 +1,6 @@
 ---
 title: "MovieBoy"
-image_source: "/res/images/rob_simulator_thumbnail.png"
+image_source: "res/images/rob_simulator_thumbnail.png"
 description: "An iOS application using SwiftUI and the OMDb API for movie or show recommendations, with ability to search by genre, actors, production team, etc. Supports favoriting, darkmode and similar movie recommendations"
 publish_date: 2023-10-16
 ---
