@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Tag from '../../components/Tag.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, description, image_source, tech_stack, trailer_url } = project.data;
+---
+
+<BaseLayout title={title}>
+  <main class="max-w-4xl mx-auto px-6 py-20">
+    
+    <div class="rounded-3xl overflow-hidden bg-gray-900 border border-gray-800 mb-10 aspect-video flex items-center justify-center">
+      {trailer_url ? (
+        <iframe 
+          src={trailer_url}
+          class="w-full h-full" 
+          allowfullscreen 
+        />
+      ) : (
+        <img src={image_source} alt={title} class="w-full h-full object-cover" />
+      )}
+    </div>
+
+    <div class="space-y-6">
+      <h1 class="text-4xl font-bold text-white">{title}</h1>
+      
+      <div class="flex flex-wrap gap-2">
+        {tech_stack.map(tech => (
+          <Tag>
+            {tech}
+          </Tag>
+        ))}
+      </div>
+
+      <p class="text-xl text-gray-400 leading-relaxed">
+        {description}
+      </p>
+
+      <article class="prose prose-invert mt-10">
+         </article>
+    </div>
+  </main>
+</BaseLayout>

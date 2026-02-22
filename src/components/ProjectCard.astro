@@ -1,22 +1,45 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import Tag from "./Tag.astro";
+
 
 interface Props {
     project: CollectionEntry<"projects">;
     direction: "flex-row" | "flex-row-reverse";
 }
 
-const { project, direction } = Astro.props;
+const { project, slug, direction } = Astro.props;
 ---
 
-<div class="rounded-2xl border border-gray-800 w-3/4 h-60 p-5">
-    <div class:list={["flex gap-5 overflow-hidden h-full", direction]}>
-        <figure class="flex-[2] h-full overflow-hidden rounded-2xl">
-            <img src={project.image_source} alt={project.name} class="w-full h-full object-cover"/>
-        </figure>
-        <article class="flex flex-[3] flex-col overflow-hidden">
-            <p class="text-2xl mb-5">{project.title}</p>
-            <p class="text-sm text-gray-300 line-clamp-4 text-ellipsis">{project.description}</p>
-        </article>
+<a href={`/projects/${slug}`} class="group block w-full md:w-3/4 mx-auto">
+    <div class="rounded-2xl border border-gray-800 min-h-[15rem] p-5 transition-all duration-300 hover:border-blue-500/50 hover:bg-gray-900/30">
+        <div class:list={["flex gap-8 overflow-hidden h-full", direction]}>
+            
+            <figure class="flex-[2] h-48 md:h-auto overflow-hidden rounded-xl border border-gray-700/50">
+                <img
+                    src={project.image_source}
+                    alt={project.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+            </figure>
+
+            <article class="flex flex-[3] flex-col justify-center overflow-hidden">
+                <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                </h3>
+                
+                <p class="text-sm text-gray-400 line-clamp-3 mb-6 leading-relaxed">
+                    {project.description}
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    {project.tech_stack.map((tech: string) => (
+                        <span class="text-[10px] uppercase tracking-widest font-mono px-2 py-1 bg-gray-800 border border-gray-700 text-gray-300 rounded-md">
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+            </article>
+        </div>
     </div>
-</div>
+</a>

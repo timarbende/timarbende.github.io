@@ -8,11 +8,12 @@ const allProjects = await getCollection("projects");
 ---
 
 <BaseLayout>
-    <main class="px-10 py-10 space-y-10">
+    <main class="px-10 py-10 space-y-10 flex flex-col items-center">
         {
             allProjects.map((project: any, index: number) => (
                 <ProjectCard
                     project={project.data}
+                    slug={project.id}
                     direction={
                         index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                     }
