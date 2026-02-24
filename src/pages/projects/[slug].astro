@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, description, image_source, tech_stack, trailer_url } = project.data;
+const { title, long_description, image_source, tech_stack, trailer_url } = project.data;
 ---
 
 <BaseLayout title={title}>
@@ -41,8 +41,8 @@ const { title, description, image_source, tech_stack, trailer_url } = project.da
         ))}
       </div>
 
-      <p class="text-xl text-gray-400 leading-relaxed">
-        {description}
+      <p class="text-xl text-gray-400 leading-relaxed whitespace-pre-line">
+        {long_description}
       </p>
 
       <article class="prose prose-invert mt-10">
