@@ -4,20 +4,50 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { getCollection } from "astro:content";
 
-const allProjects = await getCollection("projects");
+const projects = await getCollection("projects");
+const corporate_projects = await getCollection("corporate_projects");
 ---
 
 <BaseLayout>
     <main class="px-10 py-10 space-y-10 flex flex-col items-center">
+        <h2 class="self-start ml-[12.5%] text-2xl font-bold text-white mt-10 mb-4">Showcase projects</h2>
         {
-            allProjects.map((project: any, index: number) => (
+            projects.map((project: any, index: number) => (
                 <ProjectCard
                     project={project.data}
-                    slug={project.id}
+                    href={`/projects/${project.id}`}
                     direction={
                         index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                     }
-                />
+                >
+                    <figure class="flex-[2] max-h-64 md:h-auto overflow-hidden rounded-xl border border-gray-700/50">
+                        <img
+                            src={project.data.image_source}
+                            alt={project.data.title}
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </figure>
+                </ProjectCard>
+            ))
+        }
+
+        <h2 class="self-start ml-[12.5%] text-2xl font-bold text-white mt-10 mb-4">Corporate projects</h2>
+        <p class="self-start ml-[12.5%]">The following projects are corporate work and therefore details may be limited. Feel free to reach out in case interested</p>
+        {
+            corporate_projects.map((project: any, index: number) => (
+                <ProjectCard
+                    project={project.data}
+                    href={`/corporate-projects/${project.id}`}
+                    direction = "flex-row"
+                >
+                    <figure class="max-w-48 max-h-48 overflow-hidden rounded-xl border border-gray-700/50">
+                        <img
+                            src={project.data.image_source}
+                            alt={project.data.title}
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </figure>
+                </ProjectCard>
             ))
         }
     </main>

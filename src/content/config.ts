@@ -15,4 +15,16 @@ const projects = defineCollection({
     })
 });
 
-export const collections = {projects};
+const corporate_projects = defineCollection({
+    loader: glob({pattern: "*.md", base: "./src/data/corporate_projects"}),
+    schema: z.object({
+        title: z.string(),
+        image_source: z.string().optional(),
+        short_description: z.string(),
+        long_description: z.string(),
+        corporate_name: z.string(),
+        tech_stack: z.array(z.string())
+    })
+});
+
+export const collections = {projects, corporate_projects};

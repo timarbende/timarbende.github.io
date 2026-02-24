@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Tag from '../../components/Tag.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection('corporate_projects');
   return projects.map(project => ({
     params: { slug: project.id },
     props: { project },
@@ -12,22 +12,15 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, long_description, image_source, tech_stack, trailer_url } = project.data;
+const { title, long_description, image_source, tech_stack } = project.data;
+const {Content} = await render(project);
 ---
 
 <BaseLayout title={title}>
   <main class="max-w-4xl mx-auto px-6 py-20">
     
-    <div class="rounded-3xl overflow-hidden bg-gray-900 border border-gray-800 mb-10 aspect-video flex items-center justify-center">
-      {trailer_url ? (
-        <iframe 
-          src={trailer_url}
-          class="w-full h-full" 
-          allowfullscreen 
-        />
-      ) : (
-        <img src={image_source} alt={title} class="w-full h-full object-cover" />
-      )}
+    <div class="rounded-3xl overflow-hidden h-60 w-60 bg-gray-900 border border-gray-800 mb-10 aspect-video flex items-center justify-center">
+      <img src={image_source} alt={title} class="w-full h-full object-cover" />
     </div>
 
     <div class="space-y-6">
@@ -44,6 +37,10 @@ const { title, long_description, image_source, tech_stack, trailer_url } = proje
       <p class="text-xl text-gray-400 leading-relaxed whitespace-pre-line">
         {long_description}
       </p>
+
+      <div class="prose prose-invert prose-a:text-blue-500 hover:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline">
+        <Content/>
+      </div>
     </div>
   </main>
 </BaseLayout>
