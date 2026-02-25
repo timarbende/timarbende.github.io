@@ -1,0 +1,12 @@
+---
+title: "M&D Profi BarcodeReader"
+corporate_name: "M&D Profi"
+short_description: "Agile mixed-reality testing environment for BMW BETA-Labs using the Apple Vision Pro. Included is a physical customizable cockpit prototype with steering wheel and touch display, greatly reducing the need for costly physical prototypes. This platform served as the foundation for the BMW Panoramic iDrive world premiere at CES 2025"
+long_description: "In the rapidly evolving era of Software-Defined Vehicles (SDV), the traditional process of building physical prototypes for UX testing is becoming a costly bottleneck. To address this, I worked as part of a joint team including BMW BETA-Labs, adesso, and the Technical University of Munich to develop a high-fidelity virtual cockpit. Utilizing the Apple Vision Pro, we created a platform that allows designers and engineers to conduct 'reality checks' on infotainment and cockpit concepts in a mixed-reality environment, drastically reducing the need for expensive physical demonstrators. \n \n Our team developed a sophisticated ecosystem that bridges the gap between digital simulation and haptic reality. Beyond just visual exploration, we built a fully functional physical driving simulator that integrates real-world inputs—such as steering wheels, pedals, and touch displays—into the visionOS environment. Key technical challenges included implementing low-latency video streaming via custom iOS and macOS applications to project external device content into the 3D space, and developing a Python-based data bridge to sync physical hardware movements with their virtual counterparts in real-time. \n \n The resulting BMW Virtual Cockpit provides a future-proof testbed for everything from ergonomic assessments to Level 3 autonomous driving scenarios. By allowing for agile software iteration and immediate feedback on driver distraction and UX coherence, the platform has become a vital tool for BMW’s development process. The project’s success was highlighted on a global stage, with a further development of our prototype featured at CES 2025 during the world premiere of the BMW Panoramic iDrive."
+tech_stack:
+    - "Kotlin"
+    - "Jetpack Compose"
+    - "Universal Windows Platform"
+    - "Firebase"
+    - "HTML/CSS"
+---

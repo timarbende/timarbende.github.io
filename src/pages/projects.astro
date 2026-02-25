@@ -20,13 +20,15 @@ const corporate_projects = await getCollection("corporate_projects");
                         index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                     }
                 >
-                    <figure class="flex-[2] max-h-64 md:h-auto overflow-hidden rounded-xl border border-gray-700/50">
-                        <img
-                            src={project.data.image_source}
-                            alt={project.data.title}
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                    </figure>
+                    {project.data.image_source &&
+                        <figure class="flex-[2] max-h-64 md:h-auto overflow-hidden rounded-xl border border-gray-700/50">
+                            <img
+                                src={project.data.image_source}
+                                alt={project.data.title}
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                        </figure>
+                    }
                 </ProjectCard>
             ))
         }
@@ -40,13 +42,15 @@ const corporate_projects = await getCollection("corporate_projects");
                     href={`/corporate-projects/${project.id}`}
                     direction = "flex-row"
                 >
-                    <figure class="max-w-48 max-h-48 overflow-hidden rounded-xl border border-gray-700/50">
-                        <img
-                            src={project.data.image_source}
-                            alt={project.data.title}
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                    </figure>
+                    {project.data.image_source &&
+                        <figure class="max-w-48 max-h-48 overflow-hidden rounded-xl border border-gray-700/50">
+                            <img
+                                src={project.data.image_source}
+                                alt={project.data.title}
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                        </figure>
+                    }
                 </ProjectCard>
             ))
         }

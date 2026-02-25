@@ -8,10 +8,11 @@ const projects = defineCollection({
         title: z.string(),
         short_description: z.string(),
         long_description: z.string(),
-        image_source: z.string(),
+        image_source: z.string().optional(),
         trailer_url: z.string().optional(),
         publish_date: z.coerce.date(),
-        tech_stack: z.array(z.string())
+        tech_stack: z.array(z.string()),
+        github_link: z.string().optional()
     })
 });
 
