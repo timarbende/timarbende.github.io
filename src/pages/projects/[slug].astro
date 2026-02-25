@@ -1,59 +1,73 @@
 ---
-import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Tag from '../../components/Tag.astro';
-import VisitSourceButton from '../../components/VisitSourceButton.astro';
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Tag from "../../components/Tag.astro";
+import VisitSourceButton from "../../components/VisitSourceButton.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map(project => ({
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
     params: { slug: project.id },
     props: { project },
   }));
 }
 
 const { project } = Astro.props;
-const { title, long_description, image_source, tech_stack, trailer_url, github_link } = project.data;
-const {Content} = await render(project);
+const {
+  title,
+  long_description,
+  image_source,
+  tech_stack,
+  trailer_url,
+  github_link,
+} = project.data;
+const { Content } = await render(project);
 ---
 
 <BaseLayout title={title}>
   <main class="max-w-4xl mx-auto px-6 py-20">
-    
-    { (trailer_url || image_source) &&
-      <div class="rounded-3xl overflow-hidden bg-gray-900 border border-gray-800 mb-10 aspect-video flex items-center justify-center">
-        {trailer_url ? (
-          <iframe 
-            src={trailer_url}
-            class="w-full h-full" 
-            allowfullscreen 
-          />
-        ) : (
-          <img src={image_source} alt={title} class="w-full h-full object-cover" />
-        )}
-      </div>
+    {
+      (trailer_url || image_source) && (
+        <div class="rounded-3xl overflow-hidden bg-gray-900 border border-gray-800 mb-10 flex items-center justify-center">
+          {trailer_url ? (
+            <iframe
+              src={trailer_url}
+              title={`${title} trailer`}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              class="w-full h-full aspect-video"
+            />
+          ) : (
+            <img
+              src={image_source}
+              alt={title}
+              class="w-full h-full max-h-[800px] object-contain"
+            />
+          )}
+        </div>
+      )
     }
 
     <div class="space-y-6">
       <h1 class="text-4xl font-bold text-white">{title}</h1>
-      
+
       <div class="flex flex-wrap gap-2">
-        {tech_stack.map(tech => (
-          <Tag>
-            {tech}
-          </Tag>
-        ))}
+        {tech_stack.map((tech) => <Tag>{tech}</Tag>)}
       </div>
 
       <p class="text-xl text-gray-400 leading-relaxed whitespace-pre-line">
         {long_description}
       </p>
 
-      <div class="prose prose-invert prose-a:text-blue-500 hover:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline">
-        <Content/>
+      <div
+        class="prose prose-invert prose-a:text-blue-500 hover:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline"
+      >
+        <Content />
       </div>
 
-      {github_link && <VisitSourceButton github_link={github_link}/>}
+      {github_link && <VisitSourceButton github_link={github_link} />}
     </div>
   </main>
 </BaseLayout>
