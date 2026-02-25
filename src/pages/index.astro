@@ -4,28 +4,28 @@ import Code from "../components/Code.astro";
 
 const projects = [
   {
-    id: "mat-gen",
     title: "Roomscale PBR Material Generation",
     tech: "Pytorch / Python",
     desc: "Novel PBR material generation pipeline outperforming state-of-the-art methods",
+    link: "/projects/mat-gen"
   },
   {
-    id: "fall-for-me",
     title: "Fall for Me",
     tech: "Unity / C#",
     desc: "Multiplayer platform fighter game with hand-drawn graphics and original music",
+    link: "/projects/fall-for-me"
   },
   {
-    id: "",
     title: "BMW-Vision",
     tech: "SceneKit / Swift",
     desc: "Virtual reality driving simulator with pseudo-self-driving mode and customizable real-life driving cockpit",
+    link: "/corporate-projects/bmw_vision"
   },
   {
-    id: "arap",
     title: "ARAP",
     tech: "OpenGL / C++",
     desc: "C++ implementation of the As-Rigid-As-Possible mesh deformation technique",
+    link: "/projects/arap"
   },
 ];
 ---
@@ -66,7 +66,7 @@ const projects = [
       >
         {
           projects.map((project) => (
-            <a href={`/projects/${project.id}`}>
+            <a href={project.link}>
               <div class="min-w-[320px] md:min-w-[400px] snap-start bg-gray-900/50 border border-gray-800 p-8 rounded-xl hover:border-cyan-500/50 transition-colors group">
                 <span class="text-xs font-mono text-cyan-500 uppercase tracking-widest">
                   {project.tech}
