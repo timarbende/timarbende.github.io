@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Tag from "./Tag.astro";
-
+import TagMono from "./TagMono.astro";
 
 interface Props {
     project: CollectionEntry<"projects">;
@@ -18,19 +17,17 @@ const { project, href, direction } = Astro.props;
             <slot/>
 
             <article class="flex flex-[3] flex-col justify-center overflow-hidden">
-                <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">
+                <h3 class="text-2xl font-bold mb-3 group-hover:text-lime-400 dark:group-hover:text-blue-400 transition-colors">
                     {project.title}
                 </h3>
                 
-                <p class="text-sm text-gray-400 mb-6 leading-relaxed whitespace-pre-line">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 leading-relaxed whitespace-pre-line">
                     {project.short_description}
                 </p>
 
                 <div class="flex flex-wrap gap-2">
                     {project.tech_stack.map((tech: string) => (
-                        <span class="text-[10px] uppercase tracking-widest font-mono px-2 py-1 bg-gray-800 border border-gray-700 text-gray-300 rounded-md">
-                            {tech}
-                        </span>
+                        <TagMono text={tech}/>
                     ))}
                 </div>
             </article>

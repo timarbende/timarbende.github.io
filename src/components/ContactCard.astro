@@ -10,22 +10,22 @@ const { title, handle, href, iconName } = Astro.props;
 
 const colors = {
   email: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-  github: "bg-gray-500/10 text-gray-200 border-gray-500/20",
+  github: "bg-gray-500/10 text-gray-400 dark:text-gray-200 border-gray-500/20",
   linkedin: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
 };
 ---
 
-<a href={href} target="_blank" class="group flex items-center gap-4 p-4 rounded-xl border border-gray-800 bg-gray-900/50 hover:bg-gray-800/50 transition-all duration-300 w-full max-w-md">
+<a href={href} target="_blank" class="group flex items-center gap-4 p-4 rounded-xl border border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-900/50 hover:bg-gray-400/50 dark:hover:bg-gray-800/50 transition-all duration-300 w-full max-w-md">
     <div class={`flex items-center justify-center w-12 h-12 rounded-full border shrink-0 transition-transform group-hover:scale-110 ${colors[iconName]}`}>
         <slot name="icon" />        
     </div>
     <div class="flex flex-col">
-        <span class="text-xs font-medium uppercase tracking-wider text-gray-500">{title}</span>
-        <span class="text-lg font-semibold text-gray-200 group-hover:text-white">{handle}</span>
+        <span class="text-xs font-medium uppercase tracking-wider text-gray-400dark:text-gray-500">{title}</span>
+        <span class="text-lg font-semibold text-gray-400 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white">{handle}</span>
     </div>
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="ml-auto w-5 h-5 text-gray-600 group-hover:text-white transition-transform group-hover:translate-x-1"
+        class="ml-auto w-5 h-5 text-gray-400 group-hover:text-black dark:text-gray-600 dark:group-hover:text-white transition-transform group-hover:translate-x-1"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
