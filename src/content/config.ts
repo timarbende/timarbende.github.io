@@ -12,7 +12,8 @@ const projects = defineCollection({
         trailer_url: z.string().optional(),
         publish_date: z.coerce.date(),
         tech_stack: z.array(z.string()),
-        github_link: z.string().optional()
+        github_link: z.string().optional(),
+        order: z.number().optional().default(0)
     })
 });
 

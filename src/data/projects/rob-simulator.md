@@ -6,6 +6,7 @@ long_description: "Rob Simulator is a short Virtual Reality game with a primary 
 trailer_url: "https://www.youtube.com/embed/hkHzgXVEB_M?si=x_O6D42ZLD6fI-iR"
 publish_date: 2024-05-20
 github_link: "https://github.com/timarbende/RobSimulator"
+order: 70
 tech_stack:
     - "C#"
     - "Unity3D"

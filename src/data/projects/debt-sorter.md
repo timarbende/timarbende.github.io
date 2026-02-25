@@ -4,6 +4,7 @@ short_description: "Native android app for organizing debts between friends usin
 long_description: "DebtSorter is an award-winning Android application designed to simplify financial tracking within social circles. By integrating a custom friend-request system, the app allows users to seamlessly assign debts and receivables to contacts while monitoring their overall financial health through interactive, data-driven charts. \n \n Developed using Kotlin and the Android View system, the project served as a technical showcase for the Honor Mobile Services (HMS) ecosystem. It leveraged Honor’s cloud infrastructure for secure data persistence and push-notification handling to handle real-time user connectivity. \n \n While currently preserved as a legacy project, it remains a primary example of my ability to build cloud-integrated MVPs and implement vendor-specific SDKs under competitive pressure."
 publish_date: 2024-04-20
 github_link: "https://github.com/timarbende/DebtSorter"
+order: 90
 tech_stack:
     - "Kotlin"
     - "Android Views"

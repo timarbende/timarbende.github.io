@@ -6,6 +6,7 @@ long_description: "This is the project of my Master's Thesis, developed in the V
 trailer_url: "https://www.youtube.com/embed/JstnwpoNx34?si=i5NZdU5oETahD5bP"
 publish_date: 2026-01-20
 github_link: "https://github.com/timarbende/RoomScale-PBR-Material-Gen"
+order: 100
 tech_stack:
     - "Python"
     - "Pytorch"
