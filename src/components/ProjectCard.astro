@@ -12,7 +12,7 @@ const { project, href, direction } = Astro.props;
 
 <a href={href} class="group block w-full md:w-3/4 mx-auto">
     <div class="rounded-2xl border border-gray-800 min-h-[15rem] p-5 transition-all duration-300 hover:border-blue-500/50 hover:bg-gray-900/30">
-        <div class:list={["flex gap-8 overflow-hidden h-full", direction]}>
+        <div class=`flex gap-8 overflow-hidden h-full flex-col md:${direction}`>
             
             <slot/>
 
